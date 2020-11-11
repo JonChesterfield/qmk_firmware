@@ -16,6 +16,12 @@
 #include "keymap_danish.h"
 #include "keymap_norwegian.h"
 #include "keymap_portuguese.h"
+#include "keymap_contributions.h"
+#include "keymap_czech.h"
+#include "keymap_romanian.h"
+#include "keymap_russian.h"
+#include "keymap_uk.h"
+#include "keymap_estonian.h"
 
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_CUT LGUI(KC_X)
@@ -35,38 +41,37 @@
 
 enum custom_keycodes {
   RGB_SLD = EZ_SAFE_RANGE,
-  HSV_172_255_255,
-  HSV_86_255_128,
-  HSV_27_255_255,
+  ST_MACRO_0,
+  ST_MACRO_1,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
-    KC_EQUAL,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_LEFT,                                        KC_RIGHT,       KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
-    KC_DELETE,      KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           TG(1),                                          TG(1),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLASH,
-    KC_BSPACE,      KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           LT(2,KC_SCOLON),LGUI_T(KC_QUOTE),
-    KC_LSHIFT,      LCTL_T(KC_Z),   KC_X,           KC_C,           KC_V,           KC_B,           KC_HYPR,                                        KC_MEH,         KC_N,           KC_M,           KC_COMMA,       KC_DOT,         RCTL_T(KC_SLASH),KC_RSHIFT,
-    LT(1,KC_GRAVE), WEBUSB_PAIR,    LALT(KC_LSHIFT),KC_LEFT,        KC_RIGHT,                                                                                                       KC_UP,          KC_DOWN,        KC_LBRACKET,    KC_RBRACKET,    MO(1),
-                                                                                                    LALT_T(KC_APPLICATION),KC_LGUI,        KC_LALT,        LCTL_T(KC_ESCAPE),
-                                                                                                                    KC_HOME,        KC_PGUP,
-                                                                                    KC_SPACE,       KC_BSPACE,      KC_END,         KC_PGDOWN,      KC_TAB,         KC_ENTER
+    KC_EQUAL,       KC_EXLM,        KC_DQUO,        KC_HASH,        KC_DLR,         KC_PERC,        KC_NO,                                          TO(1),          KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_PLUS,        KC_MINUS,       KC_BSPACE,
+    KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_LGUI,                                        KC_RGUI,        KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLASH,
+    KC_DELETE,      KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_AT,          KC_QUOTE,
+    MO(1),          KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           KC_LCTRL,                                       KC_RCTRL,       KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RSHIFT,
+    ST_MACRO_0,     KC_TAB,         LALT(KC_LSHIFT),KC_LEFT,        KC_RIGHT,                                                                                                       KC_UP,          KC_DOWN,        KC_LBRACKET,    KC_RBRACKET,    ST_MACRO_1,
+                                                                                                    KC_LPRN,        KC_LCBR,        KC_RCBR,        KC_RPRN,
+                                                                                                                    KC_LBRACKET,    KC_RBRACKET,
+                                                                                    KC_SPACE,       KC_ENTER,       KC_COLN,        KC_SCOLON,      KC_ENTER,       KC_SPACE
   ),
   [1] = LAYOUT_ergodox_pretty(
-    KC_ESCAPE,      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
-    KC_TRANSPARENT, KC_EXLM,        KC_AT,          KC_LCBR,        KC_RCBR,        KC_PIPE,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_UP,          KC_7,           KC_8,           KC_9,           KC_ASTR,        KC_F12,
-    KC_TRANSPARENT, KC_HASH,        KC_DLR,         KC_LPRN,        KC_RPRN,        KC_GRAVE,                                                                       KC_DOWN,        KC_4,           KC_5,           KC_6,           KC_PLUS,        KC_TRANSPARENT,
+    KC_TILD,        KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           TO(0),                                          TO(2),          KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_UNDS,
+    KC_TRANSPARENT, KC_EXLM,        KC_AT,          KC_LCBR,        KC_RCBR,        KC_PIPE,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_UP,          KC_7,           KC_8,           KC_9,           KC_ASTR,        KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_HASH,        KC_DLR,         KC_LPRN,        KC_RPRN,        KC_GRAVE,                                                                       KC_DOWN,        KC_2,           KC_5,           KC_6,           KC_PLUS,        KC_TRANSPARENT,
     KC_TRANSPARENT, KC_PERC,        KC_CIRC,        KC_LBRACKET,    KC_RBRACKET,    KC_TILD,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_AMPR,        KC_1,           KC_2,           KC_3,           KC_BSLASH,      KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_EQUAL,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_DOT,         KC_0,           KC_EQUAL,       KC_TRANSPARENT,
-                                                                                                    RGB_MOD,        HSV_172_255_255,RGB_TOG,        RGB_SLD,
-                                                                                                                    HSV_86_255_128, KC_TRANSPARENT,
-                                                                                    RGB_VAD,        RGB_VAI,        HSV_27_255_255, KC_TRANSPARENT, RGB_HUD,        RGB_HUI
+    KC_TRANSPARENT, KC_EQUAL,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_0,           KC_DOT,         KC_0,           KC_EQUAL,       KC_TRANSPARENT,
+                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [2] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, RESET,
+    WEBUSB_PAIR,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TO(1),                                          KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, RESET,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_UP,       KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_RIGHT,    KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MEDIA_PLAY_PAUSE,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MEDIA_PREV_TRACK,KC_MEDIA_NEXT_TRACK,KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, WEBUSB_PAIR,    KC_TRANSPARENT, KC_MS_BTN1,     KC_MS_BTN2,                                                                                                     KC_AUDIO_VOL_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_MUTE,  KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN1,     KC_MS_BTN2,                                                                                                     KC_AUDIO_VOL_UP,KC_AUDIO_VOL_DOWN,KC_AUDIO_MUTE,  KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_WWW_BACK
@@ -74,40 +79,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
+rgblight_config_t rgblight_config;
+bool disable_layer_color = 0;
+
 bool suspended = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case ST_MACRO_0:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LCTL(SS_TAP(X_X)) SS_DELAY(100) SS_LSFT(SS_TAP(X_O)));
+
+    }
+    break;
+    case ST_MACRO_1:
+    if (record->event.pressed) {
+      SEND_STRING(SS_RCTL(SS_TAP(X_X)) SS_DELAY(100) SS_TAP(X_O));
+
+    }
+    break;
     case RGB_SLD:
       if (record->event.pressed) {
         rgblight_mode(1);
       }
       return false;
-    case HSV_172_255_255:
+    case TOGGLE_LAYER_COLOR:
       if (record->event.pressed) {
-        #ifdef RGBLIGHT_ENABLE
-          rgblight_enable();
-          rgblight_mode(1);
-          rgblight_sethsv(172,255,255);
-        #endif
-      }
-      return false;
-    case HSV_86_255_128:
-      if (record->event.pressed) {
-        #ifdef RGBLIGHT_ENABLE
-          rgblight_enable();
-          rgblight_mode(1);
-          rgblight_sethsv(86,255,128);
-        #endif
-      }
-      return false;
-    case HSV_27_255_255:
-      if (record->event.pressed) {
-        #ifdef RGBLIGHT_ENABLE
-          rgblight_enable();
-          rgblight_mode(1);
-          rgblight_sethsv(27,255,255);
-        #endif
+        disable_layer_color ^= 1;
       }
       return false;
   }
@@ -150,6 +148,42 @@ uint32_t layer_state_set_user(uint32_t state) {
         ergodox_right_led_3_on();
         break;
       default:
+        break;
+    }
+    switch (layer) {
+      case 0:
+        if(!disable_layer_color) {
+          rgblight_enable_noeeprom();
+          rgblight_mode_noeeprom(1);
+          rgblight_sethsv_noeeprom(172,255,255);
+        }
+        break;
+      case 1:
+        if(!disable_layer_color) {
+          rgblight_enable_noeeprom();
+          rgblight_mode_noeeprom(1);
+          rgblight_sethsv_noeeprom(129,255,255);
+        }
+        break;
+      case 2:
+        if(!disable_layer_color) {
+          rgblight_enable_noeeprom();
+          rgblight_mode_noeeprom(1);
+          rgblight_sethsv_noeeprom(0,255,255);
+        }
+        break;
+      default:
+        if(!disable_layer_color) {
+          rgblight_config.raw = eeconfig_read_rgblight();
+          if(rgblight_config.enable == true) {
+            rgblight_enable();
+            rgblight_mode(rgblight_config.mode);
+            rgblight_sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val);
+          }
+          else {
+            rgblight_disable();
+          }
+        }
         break;
     }
     return state;

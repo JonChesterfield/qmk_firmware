@@ -16,6 +16,14 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789ABCD]?", MO
 KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:="0666"
 EOF
 
+    cat << EOF >> /etc/udev/rules.d/50-oryx.rules
+# Rule for all ZSA keyboards
+SUBSYSTEM=="usb", ATTR{idVendor}=="3297", GROUP="plugdev"
+# Rule for the Ergodox EZ
+SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="1307", GROUP="plugdev"
+EOF
+
+    
 else
 
     python3 -m pip install --user qmk
